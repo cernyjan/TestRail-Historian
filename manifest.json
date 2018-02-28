@@ -1,5 +1,4 @@
 {
-
   "description": "Better history view",
   "manifest_version": 2,
   "name": "TestRail Historian",
@@ -20,5 +19,4 @@
       "js": ["jquery-3.2.1.min.js", "TestRail-Historian.js"]
     }
   ]
-
 }
