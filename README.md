@@ -16,7 +16,7 @@ After add-on:
 [TestRail Historian v1.0](https://addons.mozilla.org/cs/firefox/addon/testrail-historian/)
 
 ## Add-on for Chrome
-* download file [TestRail Historian v1.0](https://github.com/cernyjan/TestRail-Historian/testrail_historian-1.0-an+fx.xpi)
+* download file [TestRail Historian v1.0](https://github.com/cernyjan/TestRail-Historian/blob/master/testrail_historian-1.0-an+fx.xpi)
 * extract it on the file system
 * open Extensions page in browser
 * click the “Developer mode” checkbox to activate it
