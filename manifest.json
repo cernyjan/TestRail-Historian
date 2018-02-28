@@ -2,7 +2,7 @@
   "description": "Better history view",
   "manifest_version": 2,
   "name": "TestRail Historian",
-  "version": "1.0",
+  "version": "1.1",
   "homepage_url": "https://github.com/cernyjan/TestRail-Historian",
   "icons": {
     "48": "icons/history-48.png"
@@ -15,7 +15,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://testrail.quadient.group/*"],
+      "matches": ["https://*/*"],
       "js": ["jquery-3.2.1.min.js", "TestRail-Historian.js"]
     }
   ]
