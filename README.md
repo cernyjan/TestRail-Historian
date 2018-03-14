@@ -10,6 +10,11 @@ After add-on:
 ![after](After.png)
 
 ## Release Notes
+### v1.2
+* better view of each step
+* the same look of different long steps
+* remove leading and trailing white spaces
+
 ### v1.1
 * removed redundant code
 * changed permissions
@@ -18,10 +23,10 @@ After add-on:
 * bumped version
 
 ## Add-on for FireFox
-[TestRail Historian v1.1](https://addons.mozilla.org/cs/firefox/addon/testrail-historian/)
+[TestRail Historian v1.2](https://addons.mozilla.org/cs/firefox/addon/testrail-historian/)
 
 ## Add-on for Chrome
-* download file [TestRail Historian v1.1](https://github.com/cernyjan/TestRail-Historian/blob/master/testrail_historian-1.1-an+fx.xpi)
+* download file [TestRail Historian v1.2](https://github.com/cernyjan/TestRail-Historian/blob/master/testrail_historian-1.2-an+fx.xpi)
 * extract it on the file system
 * open Extensions page in browser
 * click the “Developer mode” checkbox to activate it

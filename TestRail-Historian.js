@@ -620,7 +620,8 @@ $( document ).ready(function() {
 			table.diff {\
 				border-collapse:collapse;\
 				border:1px solid darkgray;\
-				white-space:pre-wrap\
+				white-space:pre-wrap;\
+				width: 100%;\
 			}\
 			table.diff tbody {\
 				font-family:Courier, monospace\
@@ -634,7 +635,8 @@ $( document ).ready(function() {
 				color:#886;\
 				padding:.3em .5em .1em 2em;\
 				text-align:right;\
-				vertical-align:top\
+				vertical-align:top;\
+				width: 5%;\
 			}\
 			table.diff thead {\
 				border-bottom:1px solid #BBC;\
@@ -674,7 +676,7 @@ $( document ).ready(function() {
 			</style>"
 		);
 
-		function historyViewer (previousText, newText) {
+		function historyViewer (previousText, newText, viewType) {
 			return diffview.buildView({
 				baseTextLines: difflib.stringAsLines(previousText),
 				newTextLines: difflib.stringAsLines(newText),
@@ -682,25 +684,89 @@ $( document ).ready(function() {
 				baseTextName: "Previous Text",
 				newTextName: "Current Text",
 				contextSize: null,
-				viewType: 0
+				viewType: viewType
 			});
 		}
 
 		$('#history').children('.change-container').children('.change').children('.table').children('.column.change-column.change-column-content').children('.history').children('tbody').children('tr').children('td').each(function( index ) {
 	  		if ( $( this ).children('.markdown').length ) {
-		    	var newText = $( this ).children('.markdown').text().replace(/\t/g, '');
-		    	var previousText = $( this ).children('.hidden').children('.markdown').text().replace(/\t/g, '');
-		    	$( this ).parent().append( 
-					historyViewer (previousText, newText)
-				);
+		    	var newText = $.trim($( this ).children('.markdown').text()).replace(/\t/g, '');
+		    	var previousText = $.trim($( this ).children('.hidden').children('.markdown').text()).replace(/\t/g, '');
+		    	$( this ).parent().append("<br / >");
+		    	if (newText === previousText)
+				{
+					$( this ).parent().append( 
+						"<p>no changes</p>" 
+					);
+				}
+				else
+				{
+					$( this ).parent().append( 
+						historyViewer (previousText, newText, 0)
+					);
+				}
+				$( this ).parent().append("<br />");
 				$( this ).remove();
 			}
 			else if ( $( this ).children('ol').length ) {
-				var newText = $( this ).children('ol').text().replace(/\t/g, '');
-				var previousText = $( this ).children('.hidden').children('ol').text().replace(/\t/g, '');
-				$( this ).parent().append( 
-					historyViewer (previousText, newText)
-				);
+				var newTexts = [];
+				var previousTexts = [];
+
+				$( this ).children('ol').children('li').each(function( index ) {
+					var newTextLi = $.trim($( this ).text()).replace(/\t/g, '');
+					newTexts.push(newTextLi);
+				});
+
+				$( this ).children('.hidden').children('ol').children('li').each(function( index ) {
+					var previousTextLi = $.trim($( this ).text()).replace(/\t/g, '');
+					previousTexts.push(previousTextLi);
+				});
+
+				if (newTexts.length >= previousTexts.length){
+					for (i = 0; i < newTexts.length; i++) { 
+						var prevText = "";
+						if (previousTexts.length > i){
+							prevText = previousTexts[i];
+						}
+						$( this ).parent().append("<br / ><strong>" + (i+1) + ". <br /><br /></strong>");
+						if (prevText === newTexts[i])
+						{
+							$( this ).parent().append( 
+								"no changes" 
+							);
+						}
+						else
+    					{
+    						$( this ).parent().append( 
+								historyViewer (prevText, newTexts[i], 0) 
+							);
+    					}
+						$( this ).parent().append("<br /><br />");
+    				}
+				}
+				else{
+					for (i = 0; i < previousTexts.length; i++) { 
+						var newText = "";
+						if (newTexts.length > i){
+							newText = newTexts[i];
+						}
+						$( this ).parent().append("<br / ><strong>" + (i+1) + ". <br /><br /></strong>");
+						if (newText === previousTexts[i])
+						{
+							$( this ).parent().append( 
+								"<p>no changes</p>" 
+							);
+						}
+						else
+    					{
+							$( this ).parent().append(
+								historyViewer (previousTexts[i], newText, 0)
+							);
+						}
+						$( this ).parent().append("<br /><br />");
+    				}
+				}
+
 				$( this ).remove();
 			}
 		});
