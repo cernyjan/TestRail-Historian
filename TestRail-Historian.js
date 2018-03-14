@@ -693,18 +693,9 @@ $( document ).ready(function() {
 		    	var newText = $.trim($( this ).children('.markdown').text()).replace(/\t/g, '');
 		    	var previousText = $.trim($( this ).children('.hidden').children('.markdown').text()).replace(/\t/g, '');
 		    	$( this ).parent().append("<br / >");
-		    	if (newText === previousText)
-				{
-					$( this ).parent().append( 
-						"<p>no changes</p>" 
-					);
-				}
-				else
-				{
-					$( this ).parent().append( 
-						historyViewer (previousText, newText, 0)
-					);
-				}
+		    	$( this ).parent().append( 
+					historyViewer (previousText, newText, 0)
+				);
 				$( this ).parent().append("<br />");
 				$( this ).remove();
 			}
@@ -729,19 +720,10 @@ $( document ).ready(function() {
 							prevText = previousTexts[i];
 						}
 						$( this ).parent().append("<br / ><strong>" + (i+1) + ". <br /><br /></strong>");
-						if (prevText === newTexts[i])
-						{
-							$( this ).parent().append( 
-								"no changes" 
-							);
-						}
-						else
-    					{
-    						$( this ).parent().append( 
-								historyViewer (prevText, newTexts[i], 0) 
-							);
-    					}
-						$( this ).parent().append("<br /><br />");
+						$( this ).parent().append( 
+							historyViewer (prevText, newTexts[i], 0) 
+						);
+    					$( this ).parent().append("<br /><br />");
     				}
 				}
 				else{
@@ -751,22 +733,12 @@ $( document ).ready(function() {
 							newText = newTexts[i];
 						}
 						$( this ).parent().append("<br / ><strong>" + (i+1) + ". <br /><br /></strong>");
-						if (newText === previousTexts[i])
-						{
-							$( this ).parent().append( 
-								"<p>no changes</p>" 
-							);
-						}
-						else
-    					{
-							$( this ).parent().append(
-								historyViewer (previousTexts[i], newText, 0)
-							);
-						}
+						$( this ).parent().append(
+							historyViewer (previousTexts[i], newText, 0)
+						);
 						$( this ).parent().append("<br /><br />");
     				}
 				}
-
 				$( this ).remove();
 			}
 		});
