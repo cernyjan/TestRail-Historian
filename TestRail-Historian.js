@@ -687,7 +687,7 @@ $( document ).ready(function() {
 				viewType: viewType
 			});
 		}
-
+		
 		$('#history').children('.change-container').children('.change').children('.table').children('.column.change-column.change-column-content').children('.history').children('tbody').children('tr').children('td').each(function( index ) {
 	  		if ( $( this ).children('.markdown').length ) {
 		    	var newText = $.trim($( this ).children('.markdown').text()).replace(/\t/g, '');
@@ -700,45 +700,22 @@ $( document ).ready(function() {
 				$( this ).remove();
 			}
 			else if ( $( this ).children('ol').length ) {
-				var newTexts = [];
-				var previousTexts = [];
+				var newTexts = "";
+				var previousTexts = "";
 
 				$( this ).children('ol').children('li').each(function( index ) {
-					var newTextLi = $.trim($( this ).text()).replace(/\t/g, '');
-					newTexts.push(newTextLi);
+					var newTextLi = (index + 1) + "." + "\n" + $.trim($( this ).text()).replace(/\t/g, '') + "\n";
+					newTexts = newTexts + newTextLi;
 				});
 
 				$( this ).children('.hidden').children('ol').children('li').each(function( index ) {
-					var previousTextLi = $.trim($( this ).text()).replace(/\t/g, '');
-					previousTexts.push(previousTextLi);
+					var previousTextLi = (index + 1) + "." + "\n" + $.trim($( this ).text()).replace(/\t/g, '') + "\n";
+					previousTexts = previousTexts + previousTextLi;
 				});
 
-				if (newTexts.length >= previousTexts.length){
-					for (i = 0; i < newTexts.length; i++) { 
-						var prevText = "";
-						if (previousTexts.length > i){
-							prevText = previousTexts[i];
-						}
-						$( this ).parent().append("<br / ><strong>" + (i+1) + ". <br /><br /></strong>");
-						$( this ).parent().append( 
-							historyViewer (prevText, newTexts[i], 0) 
-						);
-    					$( this ).parent().append("<br /><br />");
-    				}
-				}
-				else{
-					for (i = 0; i < previousTexts.length; i++) { 
-						var newText = "";
-						if (newTexts.length > i){
-							newText = newTexts[i];
-						}
-						$( this ).parent().append("<br / ><strong>" + (i+1) + ". <br /><br /></strong>");
-						$( this ).parent().append(
-							historyViewer (previousTexts[i], newText, 0)
-						);
-						$( this ).parent().append("<br /><br />");
-    				}
-				}
+				$( this ).parent().append( 
+					historyViewer (previousTexts, newTexts)
+				);
 				$( this ).remove();
 			}
 		});
