@@ -1,7 +1,7 @@
 # TestRail Historian
 This add-on injects JavaScript into TestRail web pages for better history view. 
 
-Compatible with TestRail *5.4.1.3669* and lower.
+Compatible with TestRail *5.5.0.3735* and lower.
 
 Before add-on: 
 ![before](Before.png)
@@ -10,6 +10,11 @@ After add-on:
 ![after](After.png)
 
 ## Release Notes
+### v2.0
+* completely rewritten with new lib for diff
+* detailed changes are available in each line
+* fixed bug: False positive changes 
+
 ### v1.4
 * reverted step separation
 * added step number
@@ -30,10 +35,10 @@ After add-on:
 * bumped version
 
 ## Add-on for FireFox
-[TestRail Historian v1.4](https://addons.mozilla.org/cs/firefox/addon/testrail-historian/)
+[TestRail Historian v2.0](https://addons.mozilla.org/cs/firefox/addon/testrail-historian/)
 
 ## Add-on for Chrome
-* download file [TestRail Historian v1.4](https://github.com/cernyjan/TestRail-Historian/blob/master/testrail_historian-1.4-an+fx.xpi)
+* download file [TestRail Historian v2.0](https://github.com/cernyjan/TestRail-Historian/blob/master/testrail_historian-2.0-an+fx.xpi)
 * extract it on the file system
 * open Extensions page in browser
 * click the “Developer mode” checkbox to activate it
