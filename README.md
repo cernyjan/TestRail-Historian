@@ -10,6 +10,9 @@ After add-on:
 ![after](After.png)
 
 ## Release Notes
+### v2.1
+* improved performance 
+
 ### v2.0
 * completely rewritten with new lib for diff
 * detailed changes are available in each line
@@ -35,10 +38,10 @@ After add-on:
 * bumped version
 
 ## Add-on for FireFox
-[TestRail Historian v2.0](https://addons.mozilla.org/cs/firefox/addon/testrail-historian/)
+[TestRail Historian v2.1](https://addons.mozilla.org/cs/firefox/addon/testrail-historian/)
 
 ## Add-on for Chrome
-* download file [TestRail Historian v2.0](https://github.com/cernyjan/TestRail-Historian/blob/master/testrail_historian-2.0-an+fx.xpi)
+* download file [TestRail Historian v2.1](https://github.com/cernyjan/TestRail-Historian/blob/master/testrail_historian-2.1-an+fx.xpi)
 * extract it on the file system
 * open Extensions page in browser
 * click the “Developer mode” checkbox to activate it

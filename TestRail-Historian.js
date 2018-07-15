@@ -237,12 +237,6 @@ $( document ).ready(function() {
 		    	var newTextArray = newText.split("\n");
 				var previousTextArray = previousText.split("\n");
 				var outputText = balanceArray(previousTextArray, newTextArray);
-				console.log(newText);
-				console.log(previousText);
-				console.log("\n");
-				console.log(newTextArray);
-				console.log(previousTextArray);
-				console.log("\n");
 				redrawNotesOrPreconditionsHistory($( this ), outputText);
 			}
 			//when None
